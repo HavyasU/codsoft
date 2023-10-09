@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="calculator-box">
+            <div class="calculator-top">
+                <input type="text" name="display" id="display" readonly value=" ">
+            </div>
+            <div class="calculator-bot">
+                <button class="btn" value="AC" onclick="clearvalue('AC');">AC</button>
+                <button class="btn" value="C" onclick="clearvalue('C');">C</button>
+                <button class="btn" value="%" onclick="showdata(event)">%</button>
+                <button class="btn" value="/" onclick="showdata(event)">/</button>
+                <button class="btn" value="1" onclick="showdata(event)">1</button>
+                <button class="btn" value="2" onclick="showdata(event)">2</button>
+                <button class="btn" value="3" onclick="showdata(event)">3</button>
+                <button class="btn" value="*" onclick="showdata(event)">*</button>
+                <button class="btn" value="4" onclick="showdata(event)">4</button>
+                <button class="btn" value="5" onclick="showdata(event)">5</button>
+                <button class="btn" value="6" onclick="showdata(event)">6</button>
+                <button class="btn" value="-" onclick="showdata(event)">-</button>
+                <button class="btn" value="7" onclick="showdata(event)">7</button>
+                <button class="btn" value="8" onclick="showdata(event)">8</button>
+                <button class="btn" value="9" onclick="showdata(event)">9</button>
+                <button class="btn" value="+" onclick="showdata(event)">+</button>
+                <button class="btn zero" value="0" onclick="showdata(event)">0</button>
+                <button class="btn" value="." onclick="showdata(event)">.</button>
+                <button class="btn" value="=" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let display = document.getElementById('display')
+    function showdata(e) {
+        display.value += e.target.value;
+    }
+    function calculate(e) {
+        display.value = eval(display.value);
+    }
+    function clearvalue(str) {
+        if (str == 'AC') {
+            display.value = ""
+        }
+        else {
+
+            display.value = display.value.toString().slice(0, display.value.length - 1)
+        }
+    }
+    const operators = ['+', '-', '*', '/', '%']
+    const keyboardentry = () => {
+        window.addEventListener('keydown', (e) => {
+            console.log(e.key)
+            switch (e.key.toString() ) {
+                case '=': display.value = eval(display.value);
+                case 'Enter': display.value = eval(display.value);
+                    break;
+                case 'Backspace': display.value = display.value.toString().slice(0, display.value.length - 1)
+                    break;
+                default: if (Number.parseInt(e.key) || operators.includes(e.key.toString())) {
+                    display.value += e.key;
+                }
+            }
+        })
+    }
+    keyboardentry();
+</script>
+
+</html>
