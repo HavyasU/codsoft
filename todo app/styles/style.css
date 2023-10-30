@@ -38,7 +38,7 @@ body
     & .btn 
     {
         width: 9rem;
-        height: 3rem;
+        min-height: 3rem;
         border-radius: 7px;
         background-color: azure;
         font-size: 20px;
@@ -60,7 +60,7 @@ body
         & .todo-list 
         {
             background-color: rgb(29, 225, 225);
-            width: 19rem;
+            width: 24rem;
             max-height:4rem;
             margin: 8px 0;
             border-radius: 5px;
